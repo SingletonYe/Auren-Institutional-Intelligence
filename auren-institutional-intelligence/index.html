@@ -1,0 +1,1934 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Auren | Institutional Decision Intelligence</title>
+    <meta
+      name="description"
+      content="A premium static landing page for a finance-focused AI platform, inspired by enterprise intelligence products with original branding and synthetic assets."
+    >
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #070707;
+        --panel: #0d0d0d;
+        --panel-2: #141414;
+        --ink: #f6f1e8;
+        --muted: #a5a19a;
+        --dim: #706d67;
+        --line: rgba(246, 241, 232, 0.13);
+        --line-strong: rgba(246, 241, 232, 0.22);
+        --blue: #4857ff;
+        --blue-2: #7480ff;
+        --amber: #b78a5b;
+        --green: #52c78a;
+        --danger: #ee776d;
+        --shadow: rgba(0, 0, 0, 0.55);
+        --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --serif: "Times New Roman", Times, Georgia, serif;
+        --mono: "SFMono-Regular", Consolas, "Liberation Mono", monospace;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          linear-gradient(90deg, transparent 0, transparent calc(8.333% - 1px), rgba(255,255,255,0.055) calc(8.333% - 1px), rgba(255,255,255,0.055) 8.333%, transparent 8.333%),
+          radial-gradient(circle at 82% 16%, rgba(181, 127, 79, 0.15), transparent 30rem),
+          var(--bg);
+        color: var(--ink);
+        font-family: var(--sans);
+        letter-spacing: 0;
+      }
+
+      body.no-scroll {
+        overflow: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      button,
+      input {
+        font: inherit;
+      }
+
+      .page {
+        min-height: 100vh;
+        overflow: hidden;
+      }
+
+      .container {
+        width: min(100% - 48px, 1184px);
+        margin-inline: auto;
+      }
+
+      .site-header {
+        position: fixed;
+        z-index: 50;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 68px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgba(246, 241, 232, 0.08);
+        background: rgba(7, 7, 7, 0.78);
+        backdrop-filter: blur(18px);
+      }
+
+      .nav-shell {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+        gap: 30px;
+        width: min(100% - 36px, 1400px);
+        margin-inline: auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 9px;
+        font-weight: 760;
+        font-size: 1.25rem;
+      }
+
+      .brand-mark {
+        width: 14px;
+        height: 14px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2px;
+      }
+
+      .brand-mark span {
+        display: block;
+        background: var(--ink);
+      }
+
+      .main-nav {
+        display: flex;
+        align-items: center;
+        gap: 32px;
+        color: #aaa6a0;
+        font-size: 0.82rem;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .main-nav a,
+      .header-actions a {
+        transition: color 180ms ease, background 180ms ease, border-color 180ms ease;
+      }
+
+      .main-nav a:hover {
+        color: var(--ink);
+      }
+
+      .header-actions {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .chip-button,
+      .primary-button {
+        display: inline-flex;
+        min-height: 36px;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(246, 241, 232, 0.24);
+        border-radius: 4px;
+        padding: 0 14px;
+        font-size: 0.8rem;
+        font-weight: 780;
+        text-transform: uppercase;
+        white-space: nowrap;
+      }
+
+      .chip-button {
+        background: rgba(255, 255, 255, 0.92);
+        color: #090909;
+      }
+
+      .primary-button {
+        border-color: rgba(120, 130, 255, 0.72);
+        background: var(--blue);
+        color: #fff;
+        box-shadow: 0 9px 30px rgba(72, 87, 255, 0.28);
+      }
+
+      .primary-button:hover {
+        background: #5b68ff;
+      }
+
+      .menu-toggle {
+        display: none;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        border: 0;
+        border-radius: 4px;
+        background: transparent;
+        color: var(--ink);
+        cursor: pointer;
+      }
+
+      .menu-toggle span,
+      .menu-toggle::before,
+      .menu-toggle::after {
+        width: 20px;
+        height: 2px;
+        background: currentColor;
+        content: "";
+        display: block;
+        transition: transform 180ms ease, opacity 180ms ease;
+      }
+
+      .menu-toggle {
+        flex-direction: column;
+        gap: 5px;
+      }
+
+      .menu-open .menu-toggle span {
+        opacity: 0;
+      }
+
+      .menu-open .menu-toggle::before {
+        transform: translateY(7px) rotate(45deg);
+      }
+
+      .menu-open .menu-toggle::after {
+        transform: translateY(-7px) rotate(-45deg);
+      }
+
+      .mobile-panel {
+        display: none;
+      }
+
+      .hero {
+        position: relative;
+        min-height: 760px;
+        padding: 188px 0 88px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .hero-copy {
+        position: relative;
+        z-index: 5;
+      }
+
+      .eyebrow {
+        margin: 0 0 22px;
+        color: #f4f0e8;
+        font-size: 0.88rem;
+        font-weight: 720;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      .hero h1 {
+        max-width: 720px;
+        margin-bottom: 20px;
+        font-family: var(--serif);
+        font-size: 5.15rem;
+        font-weight: 400;
+        line-height: 0.92;
+        text-transform: uppercase;
+        color: var(--ink);
+        text-shadow: 0 4px 34px rgba(0, 0, 0, 0.76);
+      }
+
+      .hero-lede {
+        max-width: 640px;
+        margin-bottom: 24px;
+        color: #f2eee6;
+        font-size: 1.2rem;
+        line-height: 1.22;
+        text-shadow: 0 2px 20px rgba(0, 0, 0, 0.72);
+      }
+
+      .hero-actions {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        flex-wrap: wrap;
+      }
+
+      .ghost-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        min-height: 36px;
+        color: #d9d5cc;
+        font-size: 0.82rem;
+        font-weight: 760;
+        text-transform: uppercase;
+      }
+
+      .hero-asset {
+        position: absolute;
+        z-index: 1;
+        right: -150px;
+        top: 245px;
+        width: 820px;
+        height: 360px;
+        transform: rotate(-16deg) skewX(-10deg);
+        transform-origin: center;
+        opacity: 0.94;
+        filter: drop-shadow(0 46px 60px rgba(0,0,0,0.74));
+      }
+
+      .metal-ribbon {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: stretch;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .metal-ribbon i {
+        flex: 1 1 auto;
+        min-width: 18px;
+        border: 1px solid rgba(245, 220, 191, 0.12);
+        background:
+          linear-gradient(110deg, rgba(255,255,255,0.04), rgba(255,255,255,0.48) 35%, rgba(105, 74, 50, 0.28) 56%, rgba(0,0,0,0.82)),
+          linear-gradient(180deg, rgba(231, 188, 140, 0.36), rgba(36, 25, 18, 0.42));
+        box-shadow:
+          inset 0 0 24px rgba(255, 255, 255, 0.12),
+          12px 18px 26px rgba(0,0,0,0.38);
+      }
+
+      .metal-ribbon i:nth-child(2n) {
+        transform: translateY(18px);
+      }
+
+      .metal-ribbon i:nth-child(3n) {
+        transform: translateY(-16px);
+      }
+
+      .metal-ribbon i:nth-child(4n) {
+        transform: translateY(28px);
+      }
+
+      .hero-fade {
+        position: absolute;
+        inset: auto 0 0;
+        z-index: 3;
+        height: 220px;
+        background: linear-gradient(180deg, transparent, rgba(7,7,7,0.92) 65%, var(--bg));
+        pointer-events: none;
+      }
+
+      .showcase {
+        position: relative;
+        z-index: 4;
+        margin-top: -118px;
+      }
+
+      .boardroom-visual {
+        position: relative;
+        min-height: 340px;
+        border: 1px solid var(--line);
+        background:
+          linear-gradient(90deg, rgba(255,255,255,0.12) 0 2px, transparent 2px 18%),
+          linear-gradient(180deg, rgba(255,255,255,0.18) 0 2px, transparent 2px 58%),
+          radial-gradient(circle at 64% 30%, rgba(255, 237, 191, 0.54), transparent 14rem),
+          linear-gradient(120deg, #172226 0%, #0c1113 42%, #251a12 100%);
+        overflow: hidden;
+      }
+
+      .boardroom-visual::before {
+        content: "";
+        position: absolute;
+        left: 7%;
+        right: 5%;
+        top: 0;
+        height: 52%;
+        background:
+          repeating-linear-gradient(90deg, rgba(224, 238, 235, 0.24) 0 3px, transparent 3px 122px),
+          linear-gradient(180deg, rgba(208, 236, 236, 0.22), transparent);
+        opacity: 0.82;
+      }
+
+      .table-silhouette {
+        position: absolute;
+        left: 3%;
+        bottom: -18%;
+        width: 58%;
+        height: 38%;
+        border-radius: 50%;
+        background: linear-gradient(180deg, rgba(0,0,0,0.38), rgba(0,0,0,0.94));
+        transform: rotate(-4deg);
+      }
+
+      .person-shape {
+        position: absolute;
+        bottom: 0;
+        width: 140px;
+        height: 228px;
+        background:
+          radial-gradient(circle at 50% 17%, #c79d7d 0 22px, transparent 23px),
+          linear-gradient(150deg, transparent 0 25%, #15191d 26% 100%);
+        opacity: 0.88;
+      }
+
+      .person-shape.left {
+        left: 16%;
+      }
+
+      .person-shape.right {
+        right: 18%;
+        transform: scaleX(-1);
+        opacity: 0.72;
+      }
+
+      .screen-card {
+        position: absolute;
+        right: 8%;
+        bottom: 34px;
+        width: 330px;
+        border: 1px solid rgba(246, 241, 232, 0.22);
+        border-radius: 6px;
+        background: rgba(10, 10, 10, 0.78);
+        box-shadow: 0 24px 70px rgba(0,0,0,0.55);
+        backdrop-filter: blur(12px);
+      }
+
+      .screen-top {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px;
+        border-bottom: 1px solid var(--line);
+        color: #e8e3da;
+        font-size: 0.76rem;
+        font-weight: 720;
+      }
+
+      .status-dot {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--green);
+        box-shadow: 0 0 0 4px rgba(82, 199, 138, 0.14);
+      }
+
+      .mini-chart {
+        display: grid;
+        grid-template-columns: repeat(8, 1fr);
+        align-items: end;
+        gap: 8px;
+        height: 128px;
+        padding: 18px 16px 14px;
+      }
+
+      .mini-chart span {
+        min-height: 20px;
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(180deg, var(--blue-2), var(--blue));
+      }
+
+      .logo-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(9, 9, 9, 0.94);
+      }
+
+      .logo-cell {
+        min-height: 114px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        color: rgba(246, 241, 232, 0.62);
+        font-family: Georgia, serif;
+        font-size: 1.38rem;
+      }
+
+      .logo-cell:nth-child(4n) {
+        border-right: 0;
+      }
+
+      .logo-cell strong {
+        font-family: var(--sans);
+        font-size: 1.45rem;
+      }
+
+      .features {
+        position: relative;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-grid {
+        display: grid;
+        grid-template-columns: 34% 66%;
+        min-height: 760px;
+      }
+
+      .feature-rail {
+        position: sticky;
+        top: 68px;
+        align-self: start;
+        min-height: calc(100vh - 68px);
+        padding: 160px 44px 60px 24px;
+        border-right: 1px solid var(--line);
+      }
+
+      .rail-title {
+        margin-bottom: 72px;
+        font-family: var(--serif);
+        font-size: 2.42rem;
+        font-weight: 400;
+        line-height: 1.02;
+      }
+
+      .feature-nav {
+        display: grid;
+        gap: 10px;
+      }
+
+      .feature-nav button {
+        width: fit-content;
+        border: 0;
+        background: transparent;
+        color: #7d7972;
+        cursor: pointer;
+        font-size: 1.05rem;
+        font-weight: 760;
+        text-align: left;
+        transition: color 180ms ease;
+      }
+
+      .feature-nav button.active,
+      .feature-nav button:hover {
+        color: #7a86ff;
+      }
+
+      .feature-stack {
+        display: grid;
+      }
+
+      .feature-panel {
+        min-height: 690px;
+        padding: 74px 48px 0;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .feature-panel h3 {
+        margin-bottom: 8px;
+        font-size: 1.35rem;
+        line-height: 1.08;
+      }
+
+      .feature-panel > p {
+        max-width: 700px;
+        margin-bottom: 34px;
+        color: #b6b1a9;
+        font-size: 1.25rem;
+        line-height: 1.18;
+      }
+
+      .product-wall {
+        position: relative;
+        min-height: 440px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 88% 12%, rgba(183, 138, 91, 0.16), transparent 24rem),
+          #080808;
+        overflow: hidden;
+      }
+
+      .product-wall::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(var(--line) 1px, transparent 1px),
+          linear-gradient(90deg, var(--line) 1px, transparent 1px);
+        background-size: 120px 120px;
+        opacity: 0.32;
+      }
+
+      .workspace-card {
+        position: relative;
+        z-index: 1;
+        border: 1px solid rgba(246, 241, 232, 0.13);
+        border-radius: 6px;
+        background: rgba(18, 18, 18, 0.78);
+        overflow: hidden;
+      }
+
+      .workspace-card.large {
+        width: 64%;
+        min-height: 190px;
+      }
+
+      .workspace-card.small {
+        position: absolute;
+        width: 28%;
+      }
+
+      .workspace-card.small.one {
+        right: 28px;
+        top: 28px;
+      }
+
+      .workspace-card.small.two {
+        right: 28px;
+        bottom: 28px;
+      }
+
+      .workspace-card.small.three {
+        left: 21%;
+        bottom: 28px;
+      }
+
+      .workspace-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        padding: 13px 14px;
+        border-bottom: 1px solid var(--line);
+        color: #ece7df;
+        font-size: 0.82rem;
+        font-weight: 760;
+      }
+
+      .workspace-body {
+        padding: 14px;
+      }
+
+      .doc-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        gap: 10px;
+        align-items: center;
+        min-height: 34px;
+        border-bottom: 1px solid rgba(246, 241, 232, 0.06);
+        color: #aaa59e;
+        font-size: 0.74rem;
+      }
+
+      .doc-icon {
+        width: 20px;
+        height: 20px;
+        border-radius: 4px;
+        background: rgba(246, 241, 232, 0.08);
+      }
+
+      .tag {
+        border-radius: 4px;
+        padding: 4px 6px;
+        background: rgba(72, 87, 255, 0.24);
+        color: #bfc5ff;
+        font-size: 0.68rem;
+      }
+
+      .barset {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);
+        align-items: end;
+        gap: 7px;
+        height: 120px;
+      }
+
+      .barset span {
+        border-radius: 3px 3px 0 0;
+        background: linear-gradient(180deg, #8e96ff, #4857ff);
+      }
+
+      .matrix-panel {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: rgba(10, 10, 10, 0.92);
+        overflow: hidden;
+      }
+
+      .matrix-toolbar,
+      .table-toolbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 15px 16px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .matrix-toolbar strong,
+      .table-toolbar strong {
+        color: #f2ede5;
+        font-size: 0.88rem;
+      }
+
+      .toolbar-actions {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-wrap: wrap;
+      }
+
+      .toolbar-actions button {
+        min-height: 28px;
+        border: 1px solid rgba(246, 241, 232, 0.08);
+        border-radius: 4px;
+        background: rgba(246, 241, 232, 0.1);
+        color: #f3eee7;
+        padding: 0 10px;
+        font-size: 0.68rem;
+        font-weight: 760;
+      }
+
+      .data-table {
+        width: 100%;
+        border-collapse: collapse;
+        min-width: 720px;
+      }
+
+      .scroll-table {
+        overflow-x: auto;
+      }
+
+      th,
+      td {
+        border-bottom: 1px solid rgba(246, 241, 232, 0.07);
+        padding: 13px 14px;
+        color: #a9a39a;
+        font-size: 0.78rem;
+        line-height: 1.28;
+        text-align: left;
+        vertical-align: top;
+      }
+
+      th {
+        color: #77726b;
+        font-weight: 650;
+      }
+
+      td:first-child,
+      th:first-child {
+        color: #d7d1c8;
+      }
+
+      .flow {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 14px;
+        max-width: 760px;
+      }
+
+      .flow-step {
+        position: relative;
+        display: grid;
+        grid-template-columns: 52px 1fr auto;
+        gap: 16px;
+        align-items: center;
+        min-height: 86px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: rgba(15, 15, 15, 0.9);
+        padding: 16px;
+      }
+
+      .flow-step::after {
+        content: "";
+        position: absolute;
+        left: 41px;
+        bottom: -15px;
+        width: 1px;
+        height: 15px;
+        background: var(--line-strong);
+      }
+
+      .flow-step:last-child::after {
+        content: none;
+      }
+
+      .step-num {
+        display: grid;
+        place-items: center;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(72, 87, 255, 0.18);
+        color: #dfe2ff;
+        font-family: var(--mono);
+        font-size: 0.82rem;
+      }
+
+      .flow-step h4 {
+        margin: 0 0 4px;
+        color: #eee9df;
+      }
+
+      .flow-step p {
+        margin: 0;
+        color: #9f9990;
+        font-size: 0.86rem;
+        line-height: 1.35;
+      }
+
+      .step-state {
+        border-radius: 4px;
+        padding: 5px 8px;
+        background: rgba(82, 199, 138, 0.16);
+        color: #9ce4bf;
+        font-size: 0.68rem;
+        font-weight: 760;
+        white-space: nowrap;
+      }
+
+      .connectors {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+      }
+
+      .connector {
+        min-height: 82px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: rgba(16, 16, 16, 0.84);
+        padding: 14px;
+      }
+
+      .connector-badge {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border-radius: 6px;
+        background: rgba(246, 241, 232, 0.08);
+        color: #f0ebe2;
+        font-family: var(--mono);
+        font-size: 0.74rem;
+      }
+
+      .connector span:last-child {
+        color: #c7c1b8;
+        font-size: 0.82rem;
+        font-weight: 700;
+      }
+
+      .proof {
+        padding: 112px 0;
+        border-bottom: 1px solid var(--line);
+        background:
+          radial-gradient(circle at 8% 18%, rgba(72, 87, 255, 0.12), transparent 26rem),
+          #090909;
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 52px;
+        align-items: start;
+      }
+
+      .proof h2,
+      .use-cases h2,
+      .security h2,
+      .cta h2 {
+        font-family: var(--serif);
+        font-size: 3.3rem;
+        font-weight: 400;
+        line-height: 0.98;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border: 1px solid var(--line);
+      }
+
+      .stat {
+        min-height: 180px;
+        padding: 28px;
+        border-right: 1px solid var(--line);
+        background: rgba(16, 16, 16, 0.54);
+      }
+
+      .stat:last-child {
+        border-right: 0;
+      }
+
+      .stat strong {
+        display: block;
+        margin-bottom: 14px;
+        font-family: var(--serif);
+        font-size: 3rem;
+        font-weight: 400;
+      }
+
+      .stat span {
+        color: #aaa49b;
+        font-size: 0.9rem;
+        line-height: 1.35;
+      }
+
+      .quote {
+        margin-top: 22px;
+        border-left: 1px solid var(--blue-2);
+        padding: 10px 0 10px 24px;
+        color: #d9d3c9;
+      }
+
+      .quote blockquote {
+        margin: 0 0 18px;
+        font-family: var(--serif);
+        font-size: 1.7rem;
+        line-height: 1.12;
+      }
+
+      .quote figcaption {
+        color: #928c84;
+        font-size: 0.86rem;
+      }
+
+      .use-cases {
+        padding: 112px 0 96px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .section-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 38px;
+      }
+
+      .section-head p {
+        max-width: 520px;
+        margin-bottom: 6px;
+        color: #aaa49b;
+        font-size: 1.05rem;
+        line-height: 1.4;
+      }
+
+      .tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 20px;
+      }
+
+      .tabs button {
+        min-height: 36px;
+        border: 1px solid var(--line);
+        border-radius: 4px;
+        background: transparent;
+        color: #928d86;
+        cursor: pointer;
+        padding: 0 13px;
+        font-size: 0.76rem;
+        font-weight: 760;
+        text-transform: uppercase;
+      }
+
+      .tabs button.active {
+        border-color: rgba(116, 128, 255, 0.64);
+        background: rgba(72, 87, 255, 0.17);
+        color: #dfe2ff;
+      }
+
+      .case-card {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background:
+          linear-gradient(180deg, rgba(255,255,255,0.03), transparent 34%),
+          #0c0c0c;
+        overflow: hidden;
+      }
+
+      .case-prompt {
+        padding: 22px 22px 18px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .case-prompt h3 {
+        margin-bottom: 8px;
+        color: #f1ece4;
+        font-size: 1.05rem;
+      }
+
+      .case-prompt p {
+        margin-bottom: 0;
+        color: #b1aba3;
+        line-height: 1.35;
+      }
+
+      .security {
+        padding: 112px 0;
+        border-bottom: 1px solid var(--line);
+        background: #080808;
+      }
+
+      .security-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        border-top: 1px solid var(--line);
+        border-left: 1px solid var(--line);
+      }
+
+      .security-item {
+        min-height: 176px;
+        padding: 26px;
+        border-right: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .security-item h3 {
+        margin-bottom: 12px;
+        font-size: 1rem;
+      }
+
+      .security-item p {
+        margin: 0;
+        color: #9d978e;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+
+      .security-icon {
+        width: 34px;
+        height: 34px;
+        margin-bottom: 26px;
+        border: 1px solid rgba(246, 241, 232, 0.18);
+        border-radius: 6px;
+        background:
+          linear-gradient(90deg, transparent 45%, rgba(246, 241, 232, 0.4) 45% 55%, transparent 55%),
+          linear-gradient(180deg, transparent 45%, rgba(246, 241, 232, 0.4) 45% 55%, transparent 55%),
+          rgba(246, 241, 232, 0.05);
+      }
+
+      .cta {
+        padding: 112px 0 0;
+        background:
+          radial-gradient(circle at 52% 0%, rgba(72, 87, 255, 0.18), transparent 28rem),
+          #070707;
+      }
+
+      .cta-box {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 40px;
+        align-items: center;
+        padding: 56px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+
+      .cta p {
+        max-width: 610px;
+        color: #aca69d;
+        font-size: 1.05rem;
+        line-height: 1.42;
+      }
+
+      footer {
+        padding: 44px 0 56px;
+      }
+
+      .footer-grid {
+        display: grid;
+        grid-template-columns: 1fr repeat(4, minmax(120px, 160px));
+        gap: 30px;
+      }
+
+      .footer-col h3 {
+        margin: 0 0 16px;
+        color: #eee8df;
+        font-size: 0.75rem;
+        text-transform: uppercase;
+      }
+
+      .footer-col a,
+      .footer-note {
+        display: block;
+        margin-bottom: 9px;
+        color: #8f8981;
+        font-size: 0.84rem;
+      }
+
+      .reveal {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 600ms ease, transform 600ms ease;
+      }
+
+      .reveal.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 980px) {
+        .container {
+          width: min(100% - 28px, 720px);
+        }
+
+        .site-header {
+          height: 62px;
+        }
+
+        .nav-shell {
+          width: min(100% - 24px, 920px);
+          grid-template-columns: auto auto;
+          justify-content: space-between;
+        }
+
+        .main-nav,
+        .header-actions {
+          display: none;
+        }
+
+        .menu-toggle {
+          display: inline-flex;
+        }
+
+        .mobile-panel {
+          position: fixed;
+          z-index: 45;
+          inset: 62px 0 auto;
+          display: grid;
+          gap: 1px;
+          border-bottom: 1px solid var(--line);
+          background: #0a0a0a;
+          transform: translateY(-120%);
+          transition: transform 220ms ease;
+        }
+
+        .menu-open .mobile-panel {
+          transform: translateY(0);
+        }
+
+        .mobile-panel a {
+          min-height: 50px;
+          display: flex;
+          align-items: center;
+          padding: 0 24px;
+          border-top: 1px solid rgba(246, 241, 232, 0.08);
+          color: #e8e3da;
+          font-weight: 760;
+          text-transform: uppercase;
+        }
+
+        .hero {
+          min-height: 690px;
+          padding: 150px 0 74px;
+        }
+
+        .hero h1 {
+          font-size: 3.15rem;
+        }
+
+        .hero-lede {
+          font-size: 1rem;
+        }
+
+        .hero-asset {
+          right: -330px;
+          top: 342px;
+          width: 760px;
+          height: 250px;
+        }
+
+        .showcase {
+          margin-top: -70px;
+        }
+
+        .boardroom-visual {
+          min-height: 260px;
+        }
+
+        .screen-card {
+          display: none;
+        }
+
+        .logo-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .logo-cell:nth-child(2n) {
+          border-right: 0;
+        }
+
+        .logo-cell:nth-child(4n) {
+          border-right: 0;
+        }
+
+        .section-grid {
+          display: block;
+        }
+
+        .feature-rail {
+          position: relative;
+          top: 0;
+          min-height: 0;
+          padding: 72px 0 28px;
+          border-right: 0;
+        }
+
+        .rail-title {
+          margin-bottom: 26px;
+          font-size: 2.2rem;
+        }
+
+        .feature-nav {
+          display: flex;
+          overflow-x: auto;
+          gap: 12px;
+          padding-bottom: 8px;
+        }
+
+        .feature-nav button {
+          white-space: nowrap;
+        }
+
+        .feature-panel {
+          min-height: auto;
+          padding: 52px 0;
+        }
+
+        .workspace-card.large,
+        .workspace-card.small {
+          position: relative;
+          inset: auto;
+          width: auto;
+          margin-bottom: 12px;
+        }
+
+        .product-wall {
+          min-height: 0;
+          padding: 16px;
+        }
+
+        .connectors,
+        .security-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .proof-grid,
+        .section-head,
+        .cta-box,
+        .footer-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .proof h2,
+        .use-cases h2,
+        .security h2,
+        .cta h2 {
+          font-size: 2.55rem;
+        }
+
+        .stats {
+          grid-template-columns: 1fr;
+        }
+
+        .stat {
+          border-right: 0;
+          border-bottom: 1px solid var(--line);
+        }
+
+        .stat:last-child {
+          border-bottom: 0;
+        }
+      }
+
+      @media (max-width: 560px) {
+        body {
+          background:
+            linear-gradient(90deg, transparent 0, transparent calc(50% - 1px), rgba(255,255,255,0.055) calc(50% - 1px), rgba(255,255,255,0.055) 50%, transparent 50%),
+            var(--bg);
+        }
+
+        .brand {
+          font-size: 1.13rem;
+        }
+
+        .hero {
+          min-height: 640px;
+          padding-top: 136px;
+        }
+
+        .hero h1 {
+          font-size: 2.34rem;
+          line-height: 0.96;
+        }
+
+        .eyebrow {
+          margin-bottom: 18px;
+        }
+
+        .primary-button,
+        .chip-button {
+          min-height: 34px;
+          padding-inline: 12px;
+        }
+
+        .hero-asset {
+          right: -362px;
+          top: 344px;
+          width: 665px;
+          height: 210px;
+        }
+
+        .showcase {
+          margin-top: -78px;
+        }
+
+        .boardroom-visual {
+          min-height: 216px;
+        }
+
+        .person-shape {
+          width: 96px;
+          height: 176px;
+        }
+
+        .logo-cell {
+          min-height: 88px;
+          font-size: 1.05rem;
+        }
+
+        .feature-panel > p {
+          font-size: 1rem;
+        }
+
+        .flow-step {
+          grid-template-columns: 42px 1fr;
+        }
+
+        .step-state {
+          grid-column: 2;
+          width: fit-content;
+        }
+
+        .connectors,
+        .security-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .proof,
+        .use-cases,
+        .security,
+        .cta {
+          padding-top: 76px;
+          padding-bottom: 76px;
+        }
+
+        .proof h2,
+        .use-cases h2,
+        .security h2,
+        .cta h2 {
+          font-size: 2.2rem;
+        }
+
+        .quote blockquote {
+          font-size: 1.35rem;
+        }
+
+        th,
+        td {
+          padding: 11px;
+          font-size: 0.74rem;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          scroll-behavior: auto !important;
+          transition-duration: 0.001ms !important;
+          animation-duration: 0.001ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page" id="top">
+      <header class="site-header">
+        <div class="nav-shell">
+          <a class="brand" href="#top" aria-label="Auren home">
+            <span class="brand-mark" aria-hidden="true">
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+              <span></span><span></span><span></span>
+            </span>
+            Auren
+          </a>
+          <nav class="main-nav" aria-label="Main navigation">
+            <a href="#product">Product</a>
+            <a href="#solutions">Solutions</a>
+            <a href="#company">Company</a>
+            <a href="#security">Security</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#insights">Forum</a>
+          </nav>
+          <div class="header-actions">
+            <a class="chip-button" href="#careers">Careers</a>
+            <a class="chip-button" href="#signin">Sign In</a>
+            <a class="primary-button" href="#contact">Contact Sales</a>
+          </div>
+          <button class="menu-toggle" type="button" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span>
+          </button>
+        </div>
+      </header>
+
+      <nav class="mobile-panel" aria-label="Mobile navigation">
+        <a href="#product">Product</a>
+        <a href="#solutions">Solutions</a>
+        <a href="#security">Security</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#contact">Contact Sales</a>
+      </nav>
+
+      <main>
+        <section class="hero" aria-labelledby="hero-title">
+          <div class="container hero-copy reveal">
+            <p class="eyebrow">AI for finance</p>
+            <h1 id="hero-title">Institutional Decision Intelligence</h1>
+            <p class="hero-lede">
+              AI workspaces for investors, bankers, operators, and advisors making high-stakes decisions from complex private and public information.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-button" href="#contact">Contact Sales</a>
+              <a class="ghost-link" href="#product">View product</a>
+            </div>
+          </div>
+
+          <div class="hero-asset" aria-hidden="true">
+            <div class="metal-ribbon">
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+              <i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+          </div>
+          <div class="hero-fade" aria-hidden="true"></div>
+        </section>
+
+        <section class="showcase" aria-label="Product preview">
+          <div class="container">
+            <div class="boardroom-visual reveal">
+              <div class="table-silhouette" aria-hidden="true"></div>
+              <div class="person-shape left" aria-hidden="true"></div>
+              <div class="person-shape right" aria-hidden="true"></div>
+              <div class="screen-card">
+                <div class="screen-top">
+                  <span>Q4 Portfolio Monitor</span>
+                  <span class="status-dot" aria-hidden="true"></span>
+                </div>
+                <div class="mini-chart" aria-hidden="true">
+                  <span style="height: 38%"></span>
+                  <span style="height: 52%"></span>
+                  <span style="height: 48%"></span>
+                  <span style="height: 72%"></span>
+                  <span style="height: 64%"></span>
+                  <span style="height: 85%"></span>
+                  <span style="height: 77%"></span>
+                  <span style="height: 92%"></span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="container">
+            <div class="logo-grid reveal" aria-label="Customer logos">
+              <div class="logo-cell">NORTHSTAR</div>
+              <div class="logo-cell">Meridian</div>
+              <div class="logo-cell"><strong>Stonecap</strong></div>
+              <div class="logo-cell">CENTRIX</div>
+              <div class="logo-cell"><strong>OAKLINE</strong></div>
+              <div class="logo-cell">Ridge Trust</div>
+              <div class="logo-cell">NMC</div>
+              <div class="logo-cell">Avery & Cole</div>
+            </div>
+          </div>
+        </section>
+
+        <section class="features" id="product" aria-labelledby="feature-title">
+          <div class="container section-grid">
+            <aside class="feature-rail">
+              <h2 class="rail-title" id="feature-title">Built for finance teams</h2>
+              <div class="feature-nav" aria-label="Feature navigation">
+                <button class="active" type="button" data-target="collaboration">Shared context</button>
+                <button type="button" data-target="scale">Massive context</button>
+                <button type="button" data-target="workflows">Workflow agents</button>
+                <button type="button" data-target="context">Financial grounding</button>
+              </div>
+            </aside>
+
+            <div class="feature-stack">
+              <article class="feature-panel reveal" id="collaboration">
+                <h3>Every insight becomes reusable firm knowledge</h3>
+                <p>Teams collaborate in secure rooms where files, prompts, sources, and decisions stay connected across the lifecycle of a deal or portfolio review.</p>
+                <div class="product-wall">
+                  <div class="workspace-card large">
+                    <div class="workspace-head">
+                      <span>Project Atlas diligence room</span>
+                      <span class="tag">Live</span>
+                    </div>
+                    <div class="workspace-body">
+                      <div class="doc-row"><span class="doc-icon"></span><span>Management presentation.pdf</span><span>1h ago</span></div>
+                      <div class="doc-row"><span class="doc-icon"></span><span>Revenue cohort build.xlsx</span><span>Today</span></div>
+                      <div class="doc-row"><span class="doc-icon"></span><span>Customer calls transcript set</span><span>Running</span></div>
+                      <div class="doc-row"><span class="doc-icon"></span><span>Draft investment memo</span><span>Shared</span></div>
+                    </div>
+                  </div>
+                  <div class="workspace-card small one">
+                    <div class="workspace-head"><span>Buyer map</span><span class="tag">Agent</span></div>
+                    <div class="workspace-body">
+                      <div class="doc-row"><span class="doc-icon"></span><span>24 targets ranked</span><span></span></div>
+                      <div class="doc-row"><span class="doc-icon"></span><span>8 overlap signals</span><span></span></div>
+                    </div>
+                  </div>
+                  <div class="workspace-card small two">
+                    <div class="workspace-head"><span>Cash flow bridge</span><span>5d</span></div>
+                    <div class="workspace-body">
+                      <div class="barset" aria-hidden="true">
+                        <span style="height: 42%"></span>
+                        <span style="height: 68%"></span>
+                        <span style="height: 53%"></span>
+                        <span style="height: 78%"></span>
+                        <span style="height: 58%"></span>
+                        <span style="height: 86%"></span>
+                        <span style="height: 74%"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="workspace-card small three">
+                    <div class="workspace-head"><span>Teaser draft</span><span>Done</span></div>
+                    <div class="workspace-body">
+                      <div class="doc-row"><span class="doc-icon"></span><span>5 buyer themes</span><span></span></div>
+                      <div class="doc-row"><span class="doc-icon"></span><span>Source pack attached</span><span></span></div>
+                    </div>
+                  </div>
+                </div>
+              </article>
+
+              <article class="feature-panel reveal" id="scale">
+                <h3>Reason across thousands of documents at once</h3>
+                <p>Run large comparative analyses against filings, calls, data rooms, expert transcripts, spreadsheets, and research libraries without losing source traceability.</p>
+                <div class="matrix-panel">
+                  <div class="matrix-toolbar">
+                    <strong>Airline earnings call analysis</strong>
+                    <div class="toolbar-actions">
+                      <button type="button">Export</button>
+                      <button type="button">Automate</button>
+                      <button type="button">Schedule</button>
+                      <button type="button">Share</button>
+                    </div>
+                  </div>
+                  <div class="scroll-table">
+                    <table class="data-table">
+                      <thead>
+                        <tr>
+                          <th>#</th>
+                          <th>Documents (1,256)</th>
+                          <th>Risk signals</th>
+                          <th>Opportunity signals</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr><td>1</td><td>Northwind Air - Q4 call</td><td>Margin pressure from labor disruption.</td><td>Premium loyalty program expansion.</td></tr>
+                        <tr><td>2</td><td>Continental Jet - Q4 call</td><td>Fuel hedge exposure increased.</td><td>New transatlantic routes announced.</td></tr>
+                        <tr><td>3</td><td>Harbor Airways - FY update</td><td>None meeting your criteria.</td><td>Fleet utilization improved.</td></tr>
+                        <tr><td>4</td><td>Skyline Group - Q4 call</td><td>Maintenance cycle may compress EBITDA.</td><td>Aircraft order creates capacity upside.</td></tr>
+                        <tr><td>5</td><td>Blueway plc - Q4 call</td><td>Demand weakness in regional segment.</td><td>Ancillary revenue outpaced guidance.</td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </article>
+
+              <article class="feature-panel reveal" id="workflows">
+                <h3>Encode your best process once</h3>
+                <p>Persistent agents can monitor new materials, refresh analyses, assemble drafts, and route outputs to the right stakeholders with firm-approved logic.</p>
+                <div class="flow">
+                  <div class="flow-step">
+                    <span class="step-num">01</span>
+                    <div><h4>Find relevant companies</h4><p>Screen private and public sources for businesses matching a deal thesis.</p></div>
+                    <span class="step-state">Running</span>
+                  </div>
+                  <div class="flow-step">
+                    <span class="step-num">02</span>
+                    <div><h4>Analyze expert calls</h4><p>Extract recurring objections, proof points, and management claims.</p></div>
+                    <span class="step-state">Queued</span>
+                  </div>
+                  <div class="flow-step">
+                    <span class="step-num">03</span>
+                    <div><h4>Draft committee materials</h4><p>Create memo sections and a source-backed diligence agenda.</p></div>
+                    <span class="step-state">Ready</span>
+                  </div>
+                  <div class="flow-step">
+                    <span class="step-num">04</span>
+                    <div><h4>Send the briefing</h4><p>Package the latest analysis for the deal lead before the morning call.</p></div>
+                    <span class="step-state">Scheduled</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="feature-panel reveal" id="context">
+                <h3>Connect private knowledge and market data</h3>
+                <p>Auren gives analysts one governed place to search, reason, and cite across trusted internal repositories and licensed financial sources.</p>
+                <div class="connectors">
+                  <div class="connector"><span class="connector-badge">SN</span><span>Snowlake</span></div>
+                  <div class="connector"><span class="connector-badge">S3</span><span>Cloud Storage</span></div>
+                  <div class="connector"><span class="connector-badge">FS</span><span>Market Feeds</span></div>
+                  <div class="connector"><span class="connector-badge">PB</span><span>Private Markets</span></div>
+                  <div class="connector"><span class="connector-badge">BX</span><span>Secure Box</span></div>
+                  <div class="connector"><span class="connector-badge">SP</span><span>Sharepoint</span></div>
+                  <div class="connector"><span class="connector-badge">EC</span><span>Earnings Calls</span></div>
+                  <div class="connector"><span class="connector-badge">ED</span><span>Email Digests</span></div>
+                  <div class="connector"><span class="connector-badge">FL</span><span>Filings</span></div>
+                  <div class="connector"><span class="connector-badge">IM</span><span>Investor Materials</span></div>
+                  <div class="connector"><span class="connector-badge">GL</span><span>GL Exports</span></div>
+                  <div class="connector"><span class="connector-badge">VR</span><span>Virtual Data Rooms</span></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="proof" id="solutions" aria-labelledby="proof-title">
+          <div class="container proof-grid">
+            <div class="reveal">
+              <p class="eyebrow">High-stakes finance, lower friction</p>
+              <h2 id="proof-title">Trusted work without the handoffs</h2>
+            </div>
+            <div class="reveal">
+              <div class="stats">
+                <div class="stat"><strong>$18T</strong><span>Assets represented across synthetic customer environments.</span></div>
+                <div class="stat"><strong>240K</strong><span>Average daily prompts across diligence, portfolio, and strategy rooms.</span></div>
+                <div class="stat"><strong>1.9B</strong><span>Pages indexed, parsed, cited, and ready for repeatable analysis.</span></div>
+              </div>
+              <figure class="quote">
+                <blockquote>“The platform changes how our analysts compound knowledge across every live process.”</blockquote>
+                <figcaption>Operating Partner, global investment firm</figcaption>
+              </figure>
+            </div>
+          </div>
+        </section>
+
+        <section class="use-cases" id="insights" aria-labelledby="cases-title">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 id="cases-title">How institutions use Auren</h2>
+              <p>Pick a team and watch the workspace reconfigure around its source material, questions, and decision output.</p>
+            </div>
+            <div class="tabs reveal" role="tablist" aria-label="Use case categories">
+              <button class="active" type="button" role="tab" aria-selected="true" data-case="legal">Legal</button>
+              <button type="button" role="tab" aria-selected="false" data-case="credit">Credit</button>
+              <button type="button" role="tab" aria-selected="false" data-case="corporate">Corporate</button>
+              <button type="button" role="tab" aria-selected="false" data-case="consulting">Consulting</button>
+              <button type="button" role="tab" aria-selected="false" data-case="realEstate">Real Estate</button>
+              <button type="button" role="tab" aria-selected="false" data-case="assetManagement">Asset Management</button>
+            </div>
+            <div class="case-card reveal">
+              <div class="case-prompt">
+                <h3 id="case-title">M&A deal points</h3>
+                <p id="case-question">What negotiation levers have appeared in comparable buy-side acquisitions?</p>
+              </div>
+              <div class="table-toolbar">
+                <strong id="case-table-title">Comparable agreement matrix</strong>
+                <div class="toolbar-actions">
+                  <button type="button">Add documents</button>
+                  <button type="button">Add column</button>
+                  <button type="button">Export</button>
+                </div>
+              </div>
+              <div class="scroll-table">
+                <table class="data-table" id="case-table">
+                  <thead></thead>
+                  <tbody></tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="security" id="security" aria-labelledby="security-title">
+          <div class="container">
+            <div class="section-head reveal">
+              <h2 id="security-title">Enterprise-grade security</h2>
+              <p>Designed for governed deployments where private documents, licensed data, and model outputs require strict controls.</p>
+            </div>
+            <div class="security-grid reveal">
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>Model governance</h3>
+                <p>Human-reviewable workflows, evaluation records, and deployment controls for approved institutional processes.</p>
+              </article>
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>SOC 2-ready controls</h3>
+                <p>Access logging, change management, encryption, and vendor controls designed for audit scrutiny.</p>
+              </article>
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>Encrypted everywhere</h3>
+                <p>Data is encrypted in transit and at rest with workspace-level permissions and identity provider support.</p>
+              </article>
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>No training on customer data</h3>
+                <p>Private content remains isolated from model training paths unless a customer explicitly configures otherwise.</p>
+              </article>
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>Regional controls</h3>
+                <p>Configurable retention, residency, and deletion policies support multinational operating requirements.</p>
+              </article>
+              <article class="security-item">
+                <div class="security-icon" aria-hidden="true"></div>
+                <h3>Source-level citations</h3>
+                <p>Answers preserve links back to the underlying source passages, tables, and files used in analysis.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="cta" id="contact" aria-labelledby="cta-title">
+          <div class="container">
+            <div class="cta-box reveal">
+              <div>
+                <p class="eyebrow">A new era of decision intelligence</p>
+                <h2 id="cta-title">Tailor AI to your institution</h2>
+                <p>Build governed intelligence workflows around the way your firm already sources, analyzes, and acts on information.</p>
+              </div>
+              <a class="primary-button" href="mailto:sales@example.com">Contact Sales</a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer id="company">
+        <div class="container footer-grid">
+          <div>
+            <a class="brand" href="#top" aria-label="Auren home">
+              <span class="brand-mark" aria-hidden="true">
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+                <span></span><span></span><span></span>
+              </span>
+              Auren
+            </a>
+            <p class="footer-note">Original static concept site. No third-party logos or proprietary source assets are included.</p>
+          </div>
+          <div class="footer-col">
+            <h3>Product</h3>
+            <a href="#product">Workspace</a>
+            <a href="#product">Agents</a>
+            <a href="#security">Security</a>
+          </div>
+          <div class="footer-col">
+            <h3>Solutions</h3>
+            <a href="#solutions">Investing</a>
+            <a href="#solutions">Banking</a>
+            <a href="#solutions">Strategy</a>
+          </div>
+          <div class="footer-col">
+            <h3>Company</h3>
+            <a id="careers" href="#company">Careers</a>
+            <a href="#company">Newsroom</a>
+            <a href="#company">About</a>
+          </div>
+          <div class="footer-col">
+            <h3>Contact</h3>
+            <a id="signin" href="#top">Sign in</a>
+            <a id="pricing" href="#contact">Pricing</a>
+            <a href="mailto:sales@example.com">sales@example.com</a>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const body = document.body;
+      const menuToggle = document.querySelector(".menu-toggle");
+      const mobileLinks = document.querySelectorAll(".mobile-panel a");
+
+      function setMenu(open) {
+        body.classList.toggle("menu-open", open);
+        body.classList.toggle("no-scroll", open);
+        menuToggle.setAttribute("aria-expanded", String(open));
+      }
+
+      menuToggle.addEventListener("click", () => {
+        setMenu(!body.classList.contains("menu-open"));
+      });
+
+      mobileLinks.forEach((link) => {
+        link.addEventListener("click", () => setMenu(false));
+      });
+
+      const featureButtons = document.querySelectorAll(".feature-nav button");
+      featureButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = document.getElementById(button.dataset.target);
+          if (!target) return;
+          target.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      });
+
+      const featureObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return;
+          featureButtons.forEach((button) => {
+            button.classList.toggle("active", button.dataset.target === entry.target.id);
+          });
+        });
+      }, { rootMargin: "-30% 0px -55% 0px", threshold: 0.01 });
+
+      document.querySelectorAll(".feature-panel").forEach((panel) => featureObserver.observe(panel));
+
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+
+      document.querySelectorAll(".reveal").forEach((element) => revealObserver.observe(element));
+
+      const cases = {
+        legal: {
+          title: "M&A deal points",
+          question: "What negotiation levers have appeared in comparable buy-side acquisitions?",
+          tableTitle: "Comparable agreement matrix",
+          headers: ["Document", "Consideration", "Earn-out", "Indemnity", "Termination"],
+          rows: [
+            ["Project Harbor APA", "Cash", "$8m if revenue exceeds plan", "Seller cap set at 10%", "$3m reverse fee"],
+            ["Ocean Alpha MIPA", "Cash + stock", "10% contingent equity", "IP reps survive closing", "No fee identified"],
+            ["Beacon Merger", "Stock", "No earn-out", "RWI included", "$1.5m reverse fee"],
+            ["Titan Purchase", "Cash", "$2m if EBITDA target met", "Losses capped at $2m", "Buyer fee on financing failure"]
+          ]
+        },
+        credit: {
+          title: "Credit agreement terms",
+          question: "Which borrower terms changed across recent middle-market loans?",
+          tableTitle: "Credit terms matrix",
+          headers: ["Document", "Facility", "Margin", "Amortization", "Call Protection"],
+          rows: [
+            ["Allgood HoldCo", "$200m unitranche", "SOFR + 4.00%", "0.25% quarterly", "Make whole / 101 / par"],
+            ["BrightBucket", "$100m first lien", "L + 350 bps", "None", "101 soft call"],
+            ["Apex Holdings", "$250m senior loan", "SOFR + 3.75%", "0.30% quarterly", "Make whole / 102 / par"],
+            ["Stellar Group", "$150m revolver", "L + 3.50%", "0.50% quarterly", "102 / 101 / par"]
+          ]
+        },
+        corporate: {
+          title: "Customer contract review",
+          question: "Summarize commercial terms for all new deals signed this quarter.",
+          tableTitle: "Customer agreement summary",
+          headers: ["Contract", "Effective Date", "Payment Terms", "Pricing", "Termination"],
+          rows: [
+            ["Wilshire MSA", "Oct 5, 2025", "Net 30", "$800 per enterprise seat", "Convenience or cause"],
+            ["GreenTech License", "Dec 8, 2025", "Net 30", "$50k monthly platform fee", "Cause only"],
+            ["3Part MSA", "May 3, 2026", "Net 60", "$1,000 per enterprise seat", "Cause only"],
+            ["Evergreen SLA", "Jul 20, 2025", "Net 30", "$10k per project", "30 days notice"]
+          ]
+        },
+        consulting: {
+          title: "Market research synthesis",
+          question: "Synthesize the major themes in the beverage market from our research set.",
+          tableTitle: "Industry trend matrix",
+          headers: ["Report", "Year", "Trends", "Demand Drivers", "Competitive Dynamics"],
+          rows: [
+            ["North American Coffee", "2025", "Premiumization and subscriptions", "Convenience and wellness", "Fragmented specialist brands"],
+            ["Beverages in America", "2026", "Ready-to-drink expansion", "Lifestyle positioning", "High promotional intensity"],
+            ["F&B North America", "2026", "Sustainable packaging", "Ingredient innovation", "Retail shelf pressure"],
+            ["Consumer Behavior", "2025", "Functional beverages", "Health-led purchases", "Low switching costs"]
+          ]
+        },
+        realEstate: {
+          title: "Property valuation trends",
+          question: "How has each property changed quarter over quarter?",
+          tableTitle: "Property movement matrix",
+          headers: ["Property", "Quarter", "City", "Market Value", "Condition"],
+          rows: [
+            ["Crystal City - 23rd St", "2025 Q4", "Arlington", "$1.86m", "Fair, stable occupancy"],
+            ["Midtown Plaza", "2025 Q3", "New York", "$10.5m", "Good, strong office tenancy"],
+            ["Lakeside Residences", "2025 Q4", "Austin", "$820k", "Good, mixed residential demand"],
+            ["Coastal Retail Center", "2025 Q4", "Tampa", "$1.74m", "Good, tenant mix improving"]
+          ]
+        },
+        assetManagement: {
+          title: "Portfolio review",
+          question: "Prepare a risk and catalyst brief for the next investment committee.",
+          tableTitle: "Position intelligence matrix",
+          headers: ["Position", "Source Set", "Risk", "Catalyst", "Next Action"],
+          rows: [
+            ["Atlas Software", "Calls + filings", "Net retention deceleration", "Enterprise pipeline growth", "Refresh ARR bridge"],
+            ["Ridge Logistics", "Research + news", "Labor contract exposure", "Network optimization", "Schedule expert call"],
+            ["Nova Payments", "Data room", "Processor concentration", "Cross-sell opportunity", "Draft questions"],
+            ["Pioneer Health", "Filings", "Regulatory reimbursement", "Margin recovery", "Update downside case"]
+          ]
+        }
+      };
+
+      const caseTitle = document.getElementById("case-title");
+      const caseQuestion = document.getElementById("case-question");
+      const caseTableTitle = document.getElementById("case-table-title");
+      const caseTable = document.getElementById("case-table");
+      const caseTabs = document.querySelectorAll("[data-case]");
+
+      function renderCase(caseKey) {
+        const nextCase = cases[caseKey];
+        if (!nextCase) return;
+
+        caseTitle.textContent = nextCase.title;
+        caseQuestion.textContent = nextCase.question;
+        caseTableTitle.textContent = nextCase.tableTitle;
+        caseTable.querySelector("thead").innerHTML = `<tr>${nextCase.headers.map((header) => `<th>${header}</th>`).join("")}</tr>`;
+        caseTable.querySelector("tbody").innerHTML = nextCase.rows
+          .map((row) => `<tr>${row.map((cell) => `<td>${cell}</td>`).join("")}</tr>`)
+          .join("");
+      }
+
+      caseTabs.forEach((tab) => {
+        tab.addEventListener("click", () => {
+          caseTabs.forEach((item) => {
+            const active = item === tab;
+            item.classList.toggle("active", active);
+            item.setAttribute("aria-selected", String(active));
+          });
+          renderCase(tab.dataset.case);
+        });
+      });
+
+      renderCase("legal");
+    </script>
+  </body>
+</html>
