@@ -1,0 +1,16 @@
+{
+  "name": "auren-institutional-intelligence",
+  "version": "1.0.0",
+  "private": true,
+  "description": "A finance AI website prototype with a Miromind API-backed research assistant.",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "undici": "^7.27.1"
+  }
+}
